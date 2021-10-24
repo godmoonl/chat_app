@@ -1,8 +1,7 @@
 {
   "hosting": {
     "site": "godmoonl",
-
-    "public": "public"
+    "public": "bulid"
 
   }
 }
