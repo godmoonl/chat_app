@@ -1,0 +1,12 @@
+{
+  "projects": {},
+  "targets": {
+    "chat-app-3a2ea": {
+      "hosting": {
+        "godmoonl": [
+          "godmoonl"
+        ]
+      }
+    }
+  }
+}
