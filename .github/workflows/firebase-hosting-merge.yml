@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: 
-            npm cache clean --force&&rm -rf node_modules&&rm -rf package-lock.json&&npm install&&npm run build
+            npm run build
             
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
