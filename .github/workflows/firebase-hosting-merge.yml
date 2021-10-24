@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: 
+      - run: |
+            . scl_source enable llvm-toolset-6.0 || true
             npm ci&&npm run build
             
       - uses: FirebaseExtended/action-hosting-deploy@v0
