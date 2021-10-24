@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { dbService } from "../fbase";
+import { dbService, storageService } from "../fbase";
 
 const Chat= ({chatObj, isOwner})=>{
     const [editing, setEditing]=useState(false);
@@ -8,6 +8,7 @@ const Chat= ({chatObj, isOwner})=>{
         const ok = window.confirm("Are you sure you want to delete this chat?");
         if(ok){
             await dbService.doc(`chats/${chatObj.id}`).delete();
+            await storageService.refFromURL(chatObj.attachmentUrl).delete();
         }
     }
     const toggleEditing=()=>setEditing((prev)=>!prev);
@@ -42,6 +43,7 @@ return(
                     ):(
                     <>
                     <h4>{chatObj.text}</h4>
+                    {chatObj.attachmentUrl && <img src={chatObj.attachmentUrl} width="50px" height="50px"/>}
                     {isOwner&&(
                         <>
                             <button onClick={onDeleteClick}>Delete Chat</button>

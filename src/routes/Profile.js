@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router";
-import { authService } from "../fbase";
+import { authService, dbService } from "../fbase";
 
-export default () =>{
+export default ({userObj}) =>{
     const history=useHistory();
     const onLogOutClick=()=>{
         authService.signOut();
         history.push("/");
     };
-
+    const getMyChats=async()=>{
+        const chats = await dbService
+            .collection("chats")
+            .where("creatorId","==",userObj.uid)
+            .orderBy("createdAt")
+            .get();
+    }
+    useEffect(()=>{
+        getMyChats();
+    },[])
     return(
         <>
             <button onClick={onLogOutClick}>Log Out</button>
