@@ -1,5 +1,7 @@
 {
-  "projects": {},
+  "projects": {
+    "default": "chat-app-3a2ea"
+  },
   "targets": {
     "chat-app-3a2ea": {
       "hosting": {
