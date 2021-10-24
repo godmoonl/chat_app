@@ -12,7 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: 
-            npm i&&npm run build
+            npm install 
+            npm run build
             
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
