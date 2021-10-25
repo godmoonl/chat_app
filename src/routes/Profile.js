@@ -47,15 +47,6 @@ export default ({refreshUser, userObj}) =>{
                 value={newDisplayName}/>
             <input type="submit" value="Update Profile"/>
         </form>
-        <form>
-            {chats.map((chat)=>(
-                <Chat
-                    key={chat.id}
-                    chatObj={chat}
-                    isOwner={chat.createrId===userObj.uid}
-                />
-            ))}
-        </form>
             <button onClick={onLogOutClick}>Log Out</button>
         </>
     )
