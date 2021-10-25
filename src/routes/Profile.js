@@ -48,15 +48,13 @@ export default ({refreshUser, userObj}) =>{
             <input type="submit" value="Update Profile"/>
         </form>
         <form>
-            {chats.map((chat)=>{
+            {chats.map((chat)=>(
                 <Chat
                     key={chat.id}
                     chatObj={chat}
                     isOwner={chat.createrId===userObj.uid}
                 />
-
-            })
-            }
+            ))}
         </form>
             <button onClick={onLogOutClick}>Log Out</button>
         </>
