@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import Chat from "../components/Chat";
 import { authService, dbService } from "../fbase";
 
 export default ({refreshUser, userObj}) =>{
     const history=useHistory();
+    const [chats,setChats]=useState([]);
     const [newDisplayName, setNewDisplayName]=useState(userObj.displayName);
     const onLogOutClick=()=>{
         authService.signOut();
         history.push("/");
     };
     const getMyChats=async()=>{
-        const chats = await dbService
+        chats = await dbService
             .collection("chats")
             .where("creatorId","==",userObj.uid)
             .orderBy("createdAt")
@@ -44,6 +46,17 @@ export default ({refreshUser, userObj}) =>{
                 placeholder="Display name"
                 value={newDisplayName}/>
             <input type="submit" value="Update Profile"/>
+        </form>
+        <form>
+            {chats.map((chat)=>{
+                <Chat
+                    key={chat.id}
+                    chatObj={chat}
+                    isOwner={chat.createrId===userObj.uid}
+                />
+
+            })
+            }
         </form>
             <button onClick={onLogOutClick}>Log Out</button>
         </>
