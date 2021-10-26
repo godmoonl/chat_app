@@ -36,5 +36,15 @@
               AWS_S3_BUCKET: godmoonl
               AWS_ACCESS_KEY_ID: ${{ secrets. AWS_ACCESS_KEY_ID }}
               AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-              SOURCE_DIR: 'chat_app'
+              SOURCE_DIR: 'src'
+
+          - name: Transfer to S3 for serving static
+            uses: jakejarvis/s3-sync-action@master
+            with:
+              args: --acl public-read --follow-symlinks --delete
+            env:
+              AWS_S3_BUCKET: godmoonl
+              AWS_ACCESS_KEY_ID: ${{ secrets. AWS_ACCESS_KEY_ID }}
+              AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+              SOURCE_DIR: 'build'
     
