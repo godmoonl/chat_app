@@ -25,6 +25,7 @@ const onSocialClick = async (event) =>{
     console.log(data);
 };
     return(
+    <div className="container">
     <div classsName="authContainer">
         <FontAwesomeIcon
          icon={faTwitter}
@@ -41,6 +42,7 @@ const onSocialClick = async (event) =>{
                 <FontAwesomeIcon icon={faGithub}/>Continue with Github
             </button>
         </div>
+    </div>
     </div>);
 }
 export default Auth;

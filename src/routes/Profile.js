@@ -38,16 +38,17 @@ export default ({refreshUser, userObj}) =>{
         getMyChats();
     },[])
     return(
-        <>
-        <form onSubmit={onSubmit}>
+        <div className="container">
+        <form onSubmit={onSubmit} className="profileForm">
             <input 
                 onChange={onChange} 
                 type="text" 
                 placeholder="Display name"
-                value={newDisplayName}/>
-            <input type="submit" value="Update Profile"/>
+                value={newDisplayName}
+                className="formInput"/>
+            <input type="submit" value="Update Profile" className="formBtn" style={{marginTop:10}}/>
         </form>
-            <button onClick={onLogOutClick}>Log Out</button>
-        </>
+            <span onClick={onLogOutClick}className="formBtn cancelBtn logOut">Log Out</span>
+        </div>
     )
 };

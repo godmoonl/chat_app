@@ -1,3 +1,5 @@
+import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { dbService, storageService } from "../fbase";
 
@@ -26,10 +28,10 @@ const Chat= ({chatObj, isOwner})=>{
         setNewChat(value);
     };
 return(
-    <div>
+    <div className="chat">
         {editing?(
         <>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className="container chatEdit">
             <input 
                 onChange={onChange} 
                 type="text" 
@@ -43,14 +45,15 @@ return(
                     ):(
                     <>
                     <h4>{chatObj.text}</h4>
-                    {chatObj.attachmentUrl && <img src={chatObj.attachmentUrl} width="50px" height="50px"/>}
+                    {chatObj.attachmentUrl && <img src={chatObj.attachmentUrl}/>}
                     {isOwner&&(
-                        <>
-                            <button onClick={onDeleteClick}>Delete Chat</button>
-                            <button onClick={toggleEditing}>Edit Chat</button>
-                        </>
+                        <div className= "chat_actions">
+                            <button onClick={onDeleteClick}><FontAwesomeIcon icon={faTrash}/></button>
+                            <button onClick={toggleEditing}><FontAwesomeIcon icon={faPencilAlt}/></button>
+                        </div>
+                    
                     )}
-                    </>
+                  </>  
         )}
     </div>
     );
