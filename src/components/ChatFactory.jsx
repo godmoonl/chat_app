@@ -80,9 +80,8 @@ const ChatFactory = ({ userObj }) => {
           <div className="factoryForm__attachment">
             <img
               src={attachment}
-              style={{
-                backgroundImage: attachment,
-              }}
+              style={{ backgroundImage: attachment }}
+              alt=""
             />
             <div className="factoryForm__clear" onClick={onClearAttachment}>
               <span>Remove</span>
