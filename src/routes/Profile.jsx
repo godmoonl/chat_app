@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import Chat from "../components/Chat";
 import { authService, dbService } from "../fbase";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default ({ refreshUser, userObj }) => {
   const history = useHistory();
   const [chats, setChats] = useState([]);
